@@ -1,9 +1,10 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'edu.virginia.sde.hw1'
+version = ''
 
 repositories {
     mavenCentral()
@@ -16,4 +17,16 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+application {
+    mainClass = 'edu.virginia.sde.hw1.Main'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': application.mainClass
+        )
+    }
 }
