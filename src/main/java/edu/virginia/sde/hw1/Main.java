@@ -27,16 +27,16 @@ public class Main {
         }
 
         Scanner sc = new Scanner(new File(args[0]));
-        sc.useDelimiter(",|\r\n|\n|\r");
-        System.out.println(sc.next());
-        System.out.println(sc.next());
+        sc.useDelimiter("\r\n");
+        sc.next();
 
         ArrayList<State> stateArr = new ArrayList<>();
 
         while (sc.hasNext()) {
             String state = sc.next();
-            int population = sc.nextInt();
-            stateArr.add(new State(state, population));
+            String[] line = state.split(",");
+            stateArr.add(new State(line[0], Integer.parseInt(line[1])));
+
         }
 
         Apportionment ap = new Apportionment(stateArr, representatives);
