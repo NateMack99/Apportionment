@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Apportionment {
 
-    private ArrayList<State> stateArr;
+    private final ArrayList<State> stateArr;
     private int reps;
     private int populationSum = 0;
 
@@ -16,10 +16,12 @@ public class Apportionment {
         this.reps = reps;
     }
 
+    //Sorts states by remainder
     public void sort() {
         stateArr.sort(State::compareTo);
     }
 
+    //Sorts states in alphabetical order
     public void alphabetize() {
         stateArr.sort(Comparator.comparing(State::getName));
     }
@@ -31,6 +33,7 @@ public class Apportionment {
     }
 
     public void calculateRepresentatives() {
+        //Add initial representatives
         this.calculatePopulation();
         for (State state : stateArr) {
             int stateReps = (int)(((double) state.getPopulation() / populationSum) * reps);
@@ -38,6 +41,8 @@ public class Apportionment {
             state.setRemainder((((double)state.getPopulation() / populationSum) * reps) - stateReps);
             reps -= stateReps;
         }
+
+        //Sort by decimal and apportion remainder
         this.sort();
         int i = 0;
         while(reps > 0) {
@@ -48,6 +53,12 @@ public class Apportionment {
         }
     }
 
+    /*
+    Format:
+    [State1] - [#reps]
+    [State2] - [#reps]
+    ...
+     */
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
