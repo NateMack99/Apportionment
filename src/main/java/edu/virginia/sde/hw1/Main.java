@@ -12,8 +12,7 @@ public class Main {
         //Checks for correct # of arguments
         if(args.length < 1) {
             ErrorHandler.error(ErrorHandler.CustomError.INVALID_ARGUMENTS);
-            System.out.println(ErrorHandler.usageMessage + "\nExiting...");
-            return;
+            throw new RuntimeException();
         }
 
         Scanner sc;
@@ -22,8 +21,7 @@ public class Main {
             sc = new Scanner(new File(args[0]));
         } catch (FileNotFoundException e) {
             ErrorHandler.error(ErrorHandler.CustomError.FILE_NOT_FOUND);
-            System.out.println( ErrorHandler.usageMessage + "\nExiting...");
-            return;
+            throw new RuntimeException();
         }
 
         //Skip first line of file
@@ -38,8 +36,7 @@ public class Main {
                 representatives = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
                 ErrorHandler.error(ErrorHandler.CustomError.INVALID_ARGUMENTS);
-                System.out.println( ErrorHandler.usageMessage + "\nExiting...");
-                return;
+                throw new RuntimeException();
             }
         }
 
@@ -48,8 +45,16 @@ public class Main {
         while (sc.hasNext()) {
             String state = sc.next();
             String[] line = state.split(",");
-            stateArr.add(new State(line[0], Integer.parseInt(line[1])));
-
+            String name;
+            int population;
+            //Check for correct formatting
+            try {
+                name = line[0];
+                population = Integer.parseInt(line[1]);
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
+                continue;
+            }
+            stateArr.add(new State(name, population));
         }
 
         Apportionment ap = new Apportionment(stateArr, representatives);

@@ -27,7 +27,7 @@ public class Apportionment {
     }
 
     private void calculatePopulation() {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < stateArr.size(); i++) {
             populationSum += stateArr.get(i).getPopulation();
         }
     }
