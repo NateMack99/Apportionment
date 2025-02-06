@@ -49,4 +49,8 @@ class StateTest {
     @Test
     void compareTo() {
     }
+
+    @Test
+    void calcPriority() {
+    }
 }

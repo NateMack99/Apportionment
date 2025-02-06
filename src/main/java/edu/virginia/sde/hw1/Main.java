@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         //Checks for correct # of arguments
         if(args.length < 1) {
@@ -21,11 +21,11 @@ public class Main {
             sc = new Scanner(new File(args[0]));
         } catch (FileNotFoundException e) {
             ErrorHandler.error(ErrorHandler.CustomError.FILE_NOT_FOUND);
-            throw new RuntimeException();
+            throw new FileNotFoundException();
         }
 
         //Skip first line of file
-        sc.useDelimiter("\r\n");
+        sc.useDelimiter("\r\n|\r|\n");
         sc.next();
 
         int representatives = 435;
@@ -49,8 +49,8 @@ public class Main {
             int population;
             //Check for correct formatting
             try {
-                name = line[0];
-                population = Integer.parseInt(line[1]);
+                name = line[0].trim();
+                population = Integer.parseInt(line[1].trim());
             } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 continue;
             }
@@ -58,8 +58,9 @@ public class Main {
         }
 
         Apportionment ap = new Apportionment(stateArr, representatives);
-        ap.calculateRepresentatives();
+        ap.hamiltonAlg();
         System.out.println(ap);
+
     }
 
 

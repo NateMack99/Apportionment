@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09b0586a-4ccd-46d5-9095-4223f3af43a0" name="Changes" comment="Retooled errors and caught more csv edge case">
+    <list default="true" id="09b0586a-4ccd-46d5-9095-4223f3af43a0" name="Changes" comment="Fixed apportionment bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part1_input.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Apportionment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Apportionment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/ErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/ErrorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/virginia/sde/hw1/StateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/virginia/sde/hw1/StateTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +112,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="edu.virginia.sde.hw1.Main" />
       <module name="Apportionment" />
-      <option name="PROGRAM_PARAMETERS" value="build/libs/part1_input.csv 436" />
+      <option name="PROGRAM_PARAMETERS" value="build/libs/part1_input.csv 60" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -196,8 +198,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.StateTest.getReps" />
         <item itemvalue="Gradle.Apportionment [build]" />
+        <item itemvalue="Gradle.StateTest.getReps" />
         <item itemvalue="JAR Application.Apportionment-1.0-SNAPSHOT.jar" />
         <item itemvalue="Gradle.Apportionment [clean]" />
       </list>
@@ -215,7 +217,7 @@
       <workItem from="1738595106218" duration="2528000" />
       <workItem from="1738709164889" duration="1402000" />
       <workItem from="1738771351250" duration="769000" />
-      <workItem from="1738867639152" duration="2355000" />
+      <workItem from="1738867639152" duration="4744000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1738187057683</created>
@@ -259,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1738597157314</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed apportionment bug">
+      <created>1738870137204</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738870137204</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,15 +290,16 @@
     <MESSAGE value="First attempt" />
     <MESSAGE value="Made line scanning less strict" />
     <MESSAGE value="Retooled errors and caught more csv edge cases" />
-    <option name="LAST_COMMIT_MESSAGE" value="Retooled errors and caught more csv edge cases" />
+    <MESSAGE value="Fixed apportionment bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed apportionment bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Apportionment.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Main.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -7,7 +7,8 @@ public class ErrorHandler {
     enum CustomError{
         INVALID_ARGUMENTS,
         FILE_NOT_FOUND,
-        INVALID_CSV
+        INVALID_CSV,
+        INSUFFICIENT_REPS
     }
 
     static String usageMessage = "Usage: Apportionment.java [input.csv] [reps(optional)]";
@@ -29,10 +30,21 @@ public class ErrorHandler {
                 errorMessage = "Invalid input file!";
                 helpMessage = csvFormatMessage;
             }
+            case INSUFFICIENT_REPS -> {
+                errorMessage = "Insufficient representatives!";
+                helpMessage = "The Hunter-Hill algorithm requires at least as many representatives as states";
+            }
         }
 
         System.err.println("ERROR: " + errorMessage);
+        System.err.flush();
         if (!helpMessage.equals("")) {
+            //Sleeping to ensure correct ordering of messages
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
             System.out.println(helpMessage);
         }
 

@@ -50,6 +50,14 @@ public class State {
         return population;
     }
 
+    public double calcPriority() {
+        return (double) population / Math.sqrt(reps * (reps + 1));
+    }
+
+    public void clear() {
+        reps = 0;
+        remainder = 0;
+    }
     @Override
     public String toString() {
         return name + " - " + reps;

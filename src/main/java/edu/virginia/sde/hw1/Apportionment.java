@@ -1,9 +1,8 @@
 package edu.virginia.sde.hw1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
 public class Apportionment {
 
@@ -14,11 +13,6 @@ public class Apportionment {
     Apportionment(ArrayList<State> arr, int reps) {
         stateArr = arr;
         this.reps = reps;
-    }
-
-    //Sorts states by remainder
-    public void sort() {
-        stateArr.sort(Comparator.comparing(State::getRemainder));
     }
 
     //Sorts states in alphabetical order
@@ -32,7 +26,7 @@ public class Apportionment {
         }
     }
 
-    public void calculateRepresentatives() {
+    public void hamiltonAlg() {
         //Add initial representatives
         this.calculatePopulation();
         double remainderSum = 0;
@@ -56,6 +50,26 @@ public class Apportionment {
         }
     }
 
+    public void hhAlg() {
+        if(reps < stateArr.size()) {
+            ErrorHandler.error(ErrorHandler.CustomError.INSUFFICIENT_REPS);
+            System.exit(0);
+        }
+        stateArr.forEach(State::clear);
+
+        int remainingReps = reps;
+        for(int i = 0; i < stateArr.size(); i++) {
+            stateArr.get(i).addRep();
+            remainingReps--;
+        }
+
+        while(remainingReps > 0) {
+            State highestPriority = Collections.max(stateArr, Comparator.comparing(State::calcPriority));
+            highestPriority.addRep();
+            remainingReps--;
+        }
+    }
+
     /*
     Format:
     [State1] - [#reps]
@@ -72,3 +86,4 @@ public class Apportionment {
         return out.toString().trim();
     }
 }
+
