@@ -2,7 +2,7 @@ package edu.virginia.sde.hw1;
 
 import java.util.Comparator;
 
-public class State implements Comparable<State> {
+public class State {
 
     private String name;
     private int population;
@@ -53,17 +53,6 @@ public class State implements Comparable<State> {
     @Override
     public String toString() {
         return name + " - " + reps;
-    }
-
-    @Override
-    public int compareTo(State other) {
-
-        if (this.remainder == other.remainder) {
-            return 0;
-        }
-        else {
-            return this.remainder < other.remainder ? -1 : 1;
-        }
     }
 }
 

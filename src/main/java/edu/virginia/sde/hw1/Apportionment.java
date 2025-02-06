@@ -18,7 +18,7 @@ public class Apportionment {
 
     //Sorts states by remainder
     public void sort() {
-        stateArr.sort(State::compareTo);
+        stateArr.sort(Comparator.comparing(State::getRemainder));
     }
 
     //Sorts states in alphabetical order
@@ -35,21 +35,24 @@ public class Apportionment {
     public void calculateRepresentatives() {
         //Add initial representatives
         this.calculatePopulation();
-        for (State state : stateArr) {
-            int stateReps = (int)(((double) state.getPopulation() / populationSum) * reps);
-            state.setReps(stateReps);
-            state.setRemainder((((double)state.getPopulation() / populationSum) * reps) - stateReps);
-            reps -= stateReps;
-        }
+        double remainderSum = 0;
+        double remainingReps = reps;
+            for (State state : stateArr) {
+                int stateReps = (int)(((double) state.getPopulation() / populationSum) * reps);
+                state.setReps(stateReps);
+                double remainder = (((double)state.getPopulation() / populationSum) * reps) - stateReps;
+                state.setRemainder(remainder);
+                remainderSum += remainder;
+                remainingReps -= stateReps;
+            }
 
-        //Sort by decimal and apportion remainder
-        this.sort();
-        int i = 0;
-        while(reps > 0) {
-            stateArr.get(i).addRep();
-            i++;
-            i = i % stateArr.size();
-            reps--;
+            stateArr.sort(Comparator.comparing(State::getRemainder).reversed());
+            int i = 0;
+            while(remainingReps > 0) {
+                State state = stateArr.get(i);
+                stateArr.get(i).addRep();
+                i++;
+                remainingReps--;
         }
     }
 

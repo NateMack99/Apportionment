@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09b0586a-4ccd-46d5-9095-4223f3af43a0" name="Changes" comment="Made line scanning less strict">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="09b0586a-4ccd-46d5-9095-4223f3af43a0" name="Changes" comment="Retooled errors and caught more csv edge case">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part1_input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/part1_input.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/ErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/ErrorHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part1_input.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Apportionment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Apportionment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/State.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +87,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1" />
       <recent name="$PROJECT_DIR$/build/libs" />
+      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -110,7 +110,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="edu.virginia.sde.hw1.Main" />
       <module name="Apportionment" />
-      <option name="PROGRAM_PARAMETERS" value="part1_input.csv" />
+      <option name="PROGRAM_PARAMETERS" value="build/libs/part1_input.csv 436" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -212,7 +212,10 @@
       <option name="presentableId" value="Default" />
       <updated>1738186705903</updated>
       <workItem from="1738186707241" duration="19479000" />
-      <workItem from="1738595106218" duration="1768000" />
+      <workItem from="1738595106218" duration="2528000" />
+      <workItem from="1738709164889" duration="1402000" />
+      <workItem from="1738771351250" duration="769000" />
+      <workItem from="1738867639152" duration="2355000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1738187057683</created>
@@ -249,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1738282848704</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Retooled errors and caught more csv edge cases">
+      <created>1738597157314</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738597157314</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +280,18 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="First attempt" />
     <MESSAGE value="Made line scanning less strict" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made line scanning less strict" />
+    <MESSAGE value="Retooled errors and caught more csv edge cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Retooled errors and caught more csv edge cases" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/virginia/sde/hw1/Apportionment.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
