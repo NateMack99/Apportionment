@@ -12,7 +12,7 @@ public class ErrorHandler {
     }
 
     static String usageMessage = "Usage: Apportionment.java [input.csv] [reps(optional)]";
-    static String csvFormatMessage = "Input file format: [State], [Populations]";
+    static String csvFormatMessage = "Input file format:\n[Col1], [Col2]\n[Type 1], [Type 2]\n[Type 1], [Type 2]\n...";
 
     static void error(CustomError e) {
         String errorMessage = "Invalid error message?";

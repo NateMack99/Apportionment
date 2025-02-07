@@ -26,7 +26,35 @@ public class Main {
 
         //Skip first line of file
         sc.useDelimiter("\r\n|\r|\n");
-        sc.next();
+
+        int nameIndex = -1;
+        int populationIndex = -1;
+
+        String firstLine = sc.next();
+        String[] line = firstLine.split(",");
+        try {
+            String col1 = line[0].trim();
+            String col2 = line[1].trim();
+            if (col1.equals("State")) {
+                nameIndex = 0;
+                populationIndex = 1;
+                if (!col2.equals("Population")) {
+                    throw new RuntimeException();
+                }
+            } else if (col1.equals("Population")) {
+                nameIndex = 1;
+                populationIndex = 0;
+                if (!col2.equals("State")) {
+                    throw new RuntimeException();
+                }
+            } else {
+                throw new RuntimeException();
+            }
+        } catch (RuntimeException e) {
+            ErrorHandler.error(ErrorHandler.CustomError.INVALID_CSV);
+            return;
+        }
+
 
         int representatives = 435;
 
@@ -44,13 +72,13 @@ public class Main {
         ArrayList<State> stateArr = new ArrayList<>();
         while (sc.hasNext()) {
             String state = sc.next();
-            String[] line = state.split(",");
+            String[] curLine = state.split(",");
             String name;
             int population;
             //Check for correct formatting
             try {
-                name = line[0].trim();
-                population = Integer.parseInt(line[1].trim());
+                name = curLine[nameIndex].trim();
+                population = Integer.parseInt(curLine[populationIndex].trim());
             } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 continue;
             }
