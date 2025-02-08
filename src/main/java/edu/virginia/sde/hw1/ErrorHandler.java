@@ -1,18 +1,16 @@
 package edu.virginia.sde.hw1;
 
-import java.nio.file.attribute.UserPrincipal;
-import java.sql.PseudoColumnUsage;
-
 public class ErrorHandler {
     enum CustomError{
         INVALID_ARGUMENTS,
         FILE_NOT_FOUND,
-        INVALID_CSV,
-        INSUFFICIENT_REPS
+        INVALID_INPUT,
+        INSUFFICIENT_REPS,
+        ZERO_POPULATION
     }
 
-    static String usageMessage = "Usage: Apportionment.java [input.csv] [reps(optional)]";
-    static String csvFormatMessage = "Input file format:\n[Col1], [Col2]\n[Type 1], [Type 2]\n[Type 1], [Type 2]\n...";
+    static String usageMessage = "Usage: Apportionment.java [input.csv/xlsx] [reps(optional)]";
+    static String inputFormatMessage = "Input file format:\n[Col1], [Col2]\n[Type 1], [Type 2]\n[Type 1], [Type 2]\n...";
 
     static void error(CustomError e) {
         String errorMessage = "Invalid error message?";
@@ -26,13 +24,17 @@ public class ErrorHandler {
                 errorMessage = "Invalid arguments!";
                 helpMessage = usageMessage;
             }
-            case INVALID_CSV -> {
+            case INVALID_INPUT -> {
                 errorMessage = "Invalid input file!";
-                helpMessage = csvFormatMessage;
+                helpMessage = inputFormatMessage;
             }
             case INSUFFICIENT_REPS -> {
                 errorMessage = "Insufficient representatives!";
                 helpMessage = "The Hunter-Hill algorithm requires at least as many representatives as states";
+            }
+            case ZERO_POPULATION -> {
+                errorMessage = "Unable to calculate!";
+                helpMessage = "Sum of population can't be zero";
             }
         }
 

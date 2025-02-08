@@ -13,6 +13,8 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.apache.poi:poi-ooxml:5.4.0'
+
 }
 
 test {
@@ -29,4 +31,9 @@ jar {
                 'Main-Class': application.mainClass
         )
     }
+    //Found this online
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

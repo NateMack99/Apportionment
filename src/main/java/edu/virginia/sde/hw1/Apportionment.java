@@ -7,12 +7,22 @@ import java.util.Comparator;
 public class Apportionment {
 
     private final ArrayList<State> stateArr;
-    private int reps;
-    private int populationSum = 0;
+    private final int reps;
+    private final int populationSum;
 
     Apportionment(ArrayList<State> arr, int reps) {
         stateArr = arr;
         this.reps = reps;
+        int count = 0;
+        for (State state : stateArr) {
+            count += state.getPopulation();
+        }
+        populationSum = count;
+
+        if (populationSum == 0) {
+            ErrorHandler.error(ErrorHandler.CustomError.ZERO_POPULATION);
+            System.exit(0);
+        }
     }
 
     //Sorts states in alphabetical order
@@ -20,15 +30,8 @@ public class Apportionment {
         stateArr.sort(Comparator.comparing(State::getName));
     }
 
-    private void calculatePopulation() {
-        for (int i = 0; i < stateArr.size(); i++) {
-            populationSum += stateArr.get(i).getPopulation();
-        }
-    }
-
     public void hamiltonAlg() {
         //Add initial representatives
-        this.calculatePopulation();
         double remainderSum = 0;
         double remainingReps = reps;
             for (State state : stateArr) {
@@ -40,9 +43,10 @@ public class Apportionment {
                 remainingReps -= stateReps;
             }
 
-            stateArr.sort(Comparator.comparing(State::getRemainder).reversed());
+
             int i = 0;
             while(remainingReps > 0) {
+                stateArr.sort(Comparator.comparing(State::getRemainder).reversed());
                 State state = stateArr.get(i);
                 stateArr.get(i).addRep();
                 i++;
