@@ -43,3 +43,4 @@ bin/
 
 ### Tests ###
 *.csv
+*.xlsx

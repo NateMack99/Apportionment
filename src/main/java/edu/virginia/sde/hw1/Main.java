@@ -156,6 +156,9 @@ public class Main {
 
         List<String> firstLine = Arrays.asList(data.get(0));
 
+        firstLine = firstLine.stream()
+                .map(String::trim)
+                .map(s -> s.replaceAll("[^\\x00-\\x7F]", "")).toList();
         nameIndex = firstLine.indexOf("State");
         populationIndex = firstLine.indexOf("Population");
 
