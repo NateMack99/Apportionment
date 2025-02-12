@@ -138,6 +138,7 @@ public class Main {
         List<String[]> data = new ArrayList<>();
         DataFormatter formatter = new DataFormatter();
         for (Row row : sheet) {
+            if (row.getLastCellNum() < 0) {continue;}
             String[] rowData = new String[row.getLastCellNum()];
             for (int cn = 0; cn < row.getLastCellNum(); cn++) {
                 Cell cell = row.getCell(cn);
