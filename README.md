@@ -2,6 +2,10 @@
 
 This project was made entirely by me (Nate Mackintosh).
 
+To compile in InteliJ, run:
+
+**./gradlew build**
+
 To use the file, run:
 
 **Apportionment.jar [input.csv/xlsx] [#reps]**
